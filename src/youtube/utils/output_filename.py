@@ -6,7 +6,8 @@ def output_filename(youtube_title: str) -> str:
     Generate a valid filename based on the given title.
 
     Special characters are removed from the title and the filename is constructed
-    by capitalizing the first letter of each word in the title and joining them with underscores.
+    by capitalizing the first letter of each word in the title
+    and joining them with underscores.
     Only the first 10 words are considered.
 
     Args:

@@ -1,5 +1,6 @@
-import customtkinter as ctk
 from typing import Union
+
+import customtkinter as ctk
 
 
 class EntryGap(ctk.CTkEntry):
@@ -14,4 +15,9 @@ class EntryGap(ctk.CTkEntry):
 
         """
         super().__init__(master=parent, **kwargs)
+        
+        
+        
+        
+        
         self.audio_only_button = ctk.BooleanVar()

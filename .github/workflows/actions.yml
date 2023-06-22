@@ -1,0 +1,48 @@
+name: Format and run tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      -main
+
+jobs:
+  Format-and-Run-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo content
+        uses: actions/checkout@v3
+
+      - name: Setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install xvfb
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          black --include="\.py" --exclude="env/*" .
+        
+      - name: Commit and push changes
+        run: |
+          git config --global user.name ${{ github.actor }}
+          git config --global user.email ${{ github.actor }}@users.noreply.github.com
+          git add .
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "Format code with black"
+            git push
+          else
+            echo "No changes to commit."
+          fi
+
+      - name: Lint code
+        run: ruff . --ignore E402,E501,F401
+  
+      # - name: Run tests
+      #   run: find tests -name "test_*.py" -exec xvfb-run -a python {} \;

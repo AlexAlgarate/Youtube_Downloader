@@ -67,27 +67,27 @@ class App(ctk.CTk):
 
         # create tabview
         self.tabview = ctk.CTkTabview(self, width=250)
-        self.tabview.grid(row=0, column=2, padx=(20, 0), pady=(20, 0), sticky="nsew")
-        self.tabview.add("CTkTabview")
+        self.tabview.grid(row=0, column=2, padx=(10, 10), pady=(10, 20), sticky="nsew")
+        self.tabview.add("MENUUU")
         self.tabview.add("Tab 2")
         self.tabview.add("Tab 3")
-        self.tabview.tab("CTkTabview").grid_columnconfigure(
+        self.tabview.tab("MENUUU").grid_columnconfigure(
             0, weight=1
         )  # configure grid of individual tabs
         self.tabview.tab("Tab 2").grid_columnconfigure(0, weight=1)
 
         self.optionmenu_1 = ctk.CTkOptionMenu(
-            self.tabview.tab("CTkTabview"),
+            self.tabview.tab("MENUUU"),
             dynamic_resizing=False,
             values=["Value 1", "Value 2", "Value Long Long Long"],
         )
         self.optionmenu_1.grid(row=0, column=0, padx=20, pady=(20, 10))
         self.combobox_1 = ctk.CTkComboBox(
-            self.tabview.tab("CTkTabview"), values=["Value 1", "Value 2", "Value Long....."]
+            self.tabview.tab("MENUUU"), values=["Value 1", "Value 2", "Value Long....."]
         )
         self.combobox_1.grid(row=1, column=0, padx=20, pady=(10, 10))
         self.string_input_button = ctk.CTkButton(
-            self.tabview.tab("CTkTabview"),
+            self.tabview.tab("MENUUU"),
             text="Open CTkInputDialog",
             command=self.open_input_dialog_event,
         )
@@ -163,7 +163,7 @@ class App(ctk.CTk):
         self.radio_button_3.configure(state="disabled")
         self.appearance_mode_optionemenu.set("Dark")
         self.scaling_optionemenu.set("100%")
-        self.optionmenu_1.set("CTkOptionmenu")
+        self.optionmenu_1.set("MENU GUAPO")
         self.combobox_1.set("CTkComboBox")
         self.slider_1.configure(command=self.progressbar_2.set)
         self.slider_2.configure(command=self.progressbar_3.set)

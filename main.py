@@ -1,4 +1,4 @@
-from src.window.widgets import CreateWindow
+from src.window.app import CreateWindow
 
 
 def start_downloader() -> CreateWindow:
