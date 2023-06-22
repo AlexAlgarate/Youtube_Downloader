@@ -15,9 +15,5 @@ class EntryGap(ctk.CTkEntry):
 
         """
         super().__init__(master=parent, **kwargs)
-        
-        
-        
-        
-        
+
         self.audio_only_button = ctk.BooleanVar()

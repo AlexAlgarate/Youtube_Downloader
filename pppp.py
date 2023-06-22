@@ -27,11 +27,17 @@ class App(ctk.CTk):
             self.sidebar_frame, text="ctk", font=ctk.CTkFont(size=20, weight="bold")
         )
         self.logo_label.grid(row=0, column=0, padx=20, pady=(20, 10))
-        self.sidebar_button_1 = ctk.CTkButton(self.sidebar_frame, command=self.sidebar_button_event)
+        self.sidebar_button_1 = ctk.CTkButton(
+            self.sidebar_frame, command=self.sidebar_button_event
+        )
         self.sidebar_button_1.grid(row=1, column=0, padx=20, pady=10)
-        self.sidebar_button_2 = ctk.CTkButton(self.sidebar_frame, command=self.sidebar_button_event)
+        self.sidebar_button_2 = ctk.CTkButton(
+            self.sidebar_frame, command=self.sidebar_button_event
+        )
         self.sidebar_button_2.grid(row=2, column=0, padx=20, pady=10)
-        self.sidebar_button_3 = ctk.CTkButton(self.sidebar_frame, command=self.sidebar_button_event)
+        self.sidebar_button_3 = ctk.CTkButton(
+            self.sidebar_frame, command=self.sidebar_button_event
+        )
         self.sidebar_button_3.grid(row=3, column=0, padx=20, pady=10)
         self.appearance_mode_label = ctk.CTkLabel(
             self.sidebar_frame, text="Appearance Mode:", anchor="w", fg_color="#3b8ed0"
@@ -43,7 +49,9 @@ class App(ctk.CTk):
             command=self.change_appearance_mode_event,
         )
         self.appearance_mode_optionemenu.grid(row=6, column=0, padx=20, pady=(10, 10))
-        self.scaling_label = ctk.CTkLabel(self.sidebar_frame, text="UI Scaling:", anchor="w")
+        self.scaling_label = ctk.CTkLabel(
+            self.sidebar_frame, text="UI Scaling:", anchor="w"
+        )
         self.scaling_label.grid(row=7, column=0, padx=20, pady=(10, 0))
         self.scaling_optionemenu = ctk.CTkOptionMenu(
             self.sidebar_frame,
@@ -54,12 +62,16 @@ class App(ctk.CTk):
 
         # create main entry and button
         self.entry = ctk.CTkEntry(self, placeholder_text="CTkEntry")
-        self.entry.grid(row=3, column=1, columnspan=2, padx=(20, 0), pady=(20, 20), sticky="nsew")
+        self.entry.grid(
+            row=3, column=1, columnspan=2, padx=(20, 0), pady=(20, 20), sticky="nsew"
+        )
 
         self.main_button_1 = ctk.CTkButton(
             master=self, fg_color="red", border_width=2, text_color=("green", "#DCE4EE")
         )
-        self.main_button_1.grid(row=3, column=3, padx=(20, 20), pady=(20, 20), sticky="nsew")
+        self.main_button_1.grid(
+            row=3, column=3, padx=(20, 20), pady=(20, 20), sticky="nsew"
+        )
 
         # create textbox
         self.textbox = ctk.CTkTextbox(self, width=250)
@@ -92,17 +104,23 @@ class App(ctk.CTk):
             command=self.open_input_dialog_event,
         )
         self.string_input_button.grid(row=2, column=0, padx=20, pady=(10, 10))
-        self.label_tab_2 = ctk.CTkLabel(self.tabview.tab("Tab 2"), text="CTkLabel on Tab 2")
+        self.label_tab_2 = ctk.CTkLabel(
+            self.tabview.tab("Tab 2"), text="CTkLabel on Tab 2"
+        )
         self.label_tab_2.grid(row=0, column=0, padx=20, pady=20)
 
         # create radiobutton frame
         self.radiobutton_frame = ctk.CTkFrame(self)
-        self.radiobutton_frame.grid(row=0, column=3, padx=(20, 20), pady=(20, 0), sticky="nsew")
+        self.radiobutton_frame.grid(
+            row=0, column=3, padx=(20, 20), pady=(20, 0), sticky="nsew"
+        )
         self.radio_var = tkinter.IntVar(value=0)
         self.label_radio_group = ctk.CTkLabel(
             master=self.radiobutton_frame, text="CTkRadioButton Group:"
         )
-        self.label_radio_group.grid(row=0, column=2, columnspan=1, padx=10, pady=10, sticky="")
+        self.label_radio_group.grid(
+            row=0, column=2, columnspan=1, padx=10, pady=10, sticky=""
+        )
         self.radio_button_1 = ctk.CTkRadioButton(
             master=self.radiobutton_frame, variable=self.radio_var, value=0
         )
@@ -118,25 +136,47 @@ class App(ctk.CTk):
 
         # create slider and progressbar frame
         self.slider_progressbar_frame = ctk.CTkFrame(self, fg_color="transparent")
-        self.slider_progressbar_frame.grid(row=1, column=1, padx=(20, 0), pady=(20, 0), sticky="nsew")
+        self.slider_progressbar_frame.grid(
+            row=1, column=1, padx=(20, 0), pady=(20, 0), sticky="nsew"
+        )
         self.slider_progressbar_frame.grid_columnconfigure(0, weight=1)
         self.slider_progressbar_frame.grid_rowconfigure(4, weight=1)
         self.seg_button_1 = ctk.CTkSegmentedButton(self.slider_progressbar_frame)
-        self.seg_button_1.grid(row=0, column=0, padx=(20, 10), pady=(10, 10), sticky="ew")
+        self.seg_button_1.grid(
+            row=0, column=0, padx=(20, 10), pady=(10, 10), sticky="ew"
+        )
         self.progressbar_1 = ctk.CTkProgressBar(self.slider_progressbar_frame)
-        self.progressbar_1.grid(row=1, column=0, padx=(20, 10), pady=(10, 10), sticky="ew")
+        self.progressbar_1.grid(
+            row=1, column=0, padx=(20, 10), pady=(10, 10), sticky="ew"
+        )
         self.progressbar_2 = ctk.CTkProgressBar(self.slider_progressbar_frame)
-        self.progressbar_2.grid(row=2, column=0, padx=(20, 10), pady=(10, 10), sticky="ew")
-        self.slider_1 = ctk.CTkSlider(self.slider_progressbar_frame, from_=0, to=1, number_of_steps=4)
+        self.progressbar_2.grid(
+            row=2, column=0, padx=(20, 10), pady=(10, 10), sticky="ew"
+        )
+        self.slider_1 = ctk.CTkSlider(
+            self.slider_progressbar_frame, from_=0, to=1, number_of_steps=4
+        )
         self.slider_1.grid(row=3, column=0, padx=(20, 10), pady=(10, 10), sticky="ew")
-        self.slider_2 = ctk.CTkSlider(self.slider_progressbar_frame, orientation="vertical")
-        self.slider_2.grid(row=0, column=1, rowspan=5, padx=(10, 10), pady=(10, 10), sticky="ns")
-        self.progressbar_3 = ctk.CTkProgressBar(self.slider_progressbar_frame, orientation="vertical")
-        self.progressbar_3.grid(row=0, column=2, rowspan=5, padx=(10, 20), pady=(10, 10), sticky="ns")
+        self.slider_2 = ctk.CTkSlider(
+            self.slider_progressbar_frame, orientation="vertical"
+        )
+        self.slider_2.grid(
+            row=0, column=1, rowspan=5, padx=(10, 10), pady=(10, 10), sticky="ns"
+        )
+        self.progressbar_3 = ctk.CTkProgressBar(
+            self.slider_progressbar_frame, orientation="vertical"
+        )
+        self.progressbar_3.grid(
+            row=0, column=2, rowspan=5, padx=(10, 20), pady=(10, 10), sticky="ns"
+        )
 
         # create scrollable frame
-        self.scrollable_frame = ctk.CTkScrollableFrame(self, label_text="CTkScrollableFrame")
-        self.scrollable_frame.grid(row=1, column=2, padx=(20, 0), pady=(20, 0), sticky="nsew")
+        self.scrollable_frame = ctk.CTkScrollableFrame(
+            self, label_text="CTkScrollableFrame"
+        )
+        self.scrollable_frame.grid(
+            row=1, column=2, padx=(20, 0), pady=(20, 0), sticky="nsew"
+        )
         self.scrollable_frame.grid_columnconfigure(0, weight=1)
         self.scrollable_frame_switches = []
         for i in range(100):
@@ -146,7 +186,9 @@ class App(ctk.CTk):
 
         # create checkbox and switch frame
         self.checkbox_slider_frame = ctk.CTkFrame(self)
-        self.checkbox_slider_frame.grid(row=1, column=3, padx=(20, 20), pady=(20, 0), sticky="nsew")
+        self.checkbox_slider_frame.grid(
+            row=1, column=3, padx=(20, 20), pady=(20, 0), sticky="nsew"
+        )
         self.checkbox_1 = ctk.CTkCheckBox(master=self.checkbox_slider_frame)
         self.checkbox_1.grid(row=1, column=0, pady=(20, 0), padx=20, sticky="n")
         self.checkbox_2 = ctk.CTkCheckBox(master=self.checkbox_slider_frame)
