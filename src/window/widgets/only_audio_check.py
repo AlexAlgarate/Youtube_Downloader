@@ -20,8 +20,10 @@ class OnlyAudioButton(ctk.CTkCheckBox):
             button_text (str): The text to display on the button.
             **kwargs: Additional keyword arguments to configure the widget.
         """
-        if OnlyAudioButton.audio_only_var is None:
-            OnlyAudioButton.audio_only_var = ctk.BooleanVar()
+        if self.audio_only_var is None:
+            self.audio_only_var = ctk.BooleanVar()
+        # if OnlyAudioButton.audio_only_var is None:
+        #     OnlyAudioButton.audio_only_var = ctk.BooleanVar()
         super().__init__(
             master=parent,
             text=button_text,

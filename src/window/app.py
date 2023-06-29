@@ -32,12 +32,12 @@ class CreateWindow(ctk.CTk):
 
         self._create_labels()
         self._create_entry_gaps()
-        self._create_only_audio_button()
+        # self._create_only_audio_button()
         self._create_menu()
 
     def _create_menu(self):
         self.menu = CustomMenu(parent=self)
-        self.menu.place(relx=0.65, rely=0.05, relheight=0.75, relwidth=0.30)
+        self.menu.place(relx=0.65, rely=0.05, relheight=0.85, relwidth=0.30)
 
         self._create_options_menu()
         self._create_about_me_menu()
@@ -52,6 +52,8 @@ class CreateWindow(ctk.CTk):
 
     def _create_options_menu(self):
         options = self.menu.add_menus(menu_label="Options")
+        self.only_audio_button = OnlyAudioButton(options, button_text="Only audio")
+        self.only_audio_button.pack(pady=20, padx=20, ipadx=0, ipady=7, fill="y")
         config_options_buttons = [
             {"button_text": "Add URL", "command": lambda: add_entry(self.entry_list)},
             {"button_text": "Clear", "command": lambda: clear_entries(self.entry_list)},
@@ -68,8 +70,8 @@ class CreateWindow(ctk.CTk):
     def _create_only_audio_button(self) -> None:
         self.only_audio_button = OnlyAudioButton(self, button_text="Only audio")
         self.only_audio_button.place(
-            relx=0.75,
-            rely=0.25,
+            relx=0.25,
+            rely=0.85,
             relwidth=0.2,
             relheight=0.10,
             anchor="w",
