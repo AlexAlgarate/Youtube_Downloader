@@ -19,16 +19,12 @@ class CreateWindow(ctk.CTk):
 
     def __init__(self) -> None:
         super().__init__()
-        """Initialize the CreateWindow instance."""
         ctk.set_appearance_mode("dark")
         ctk.set_default_color_theme("blue")
-
         self.title(app_name)
         self.geometry(app_geometry)
         self.resizable(width=False, height=False)
-
         self.entry_list: List[EntryGap] = []
-
         self.create_widgets()
 
     def create_widgets(self) -> None:
@@ -40,66 +36,36 @@ class CreateWindow(ctk.CTk):
         self._create_menu()
 
     def _create_menu(self):
-        """Create the menu in the window."""
-
         self.menu = CustomMenu(parent=self)
-        self.menu.place(
-            relx=0.65,
-            rely=0.05,
-            relheight=0.75,
-            relwidth=0.30
-        )
+        self.menu.place(relx=0.65, rely=0.05, relheight=0.75, relwidth=0.30)
 
         self._create_options_menu()
         self._create_about_me_menu()
 
     def _create_about_me_menu(self):
-        """Create the 'About Me' submenu in the menu."""
-
         about_me = self.menu.add_menus(menu_label="About me")
         for config_about_me in about_me_buttons:
             about_me_button = self.menu.add_submenu_buttons(
                 parent=about_me, **config_about_me
             )
-            about_me_button.pack(
-                pady=20,
-                padx=20,
-                ipadx=0,
-                ipady=7,
-                fill="y"
-            )
+            about_me_button.pack(pady=20, padx=20, ipadx=0, ipady=7, fill="y")
 
     def _create_options_menu(self):
-        """Create the 'Options' submenu in the menu."""
-
         options = self.menu.add_menus(menu_label="Options")
         config_options_buttons = [
-            {
-                "button_text": "Add URL",
-                "command": lambda: add_entry(self.entry_list),
-            },
+            {"button_text": "Add URL", "command": lambda: add_entry(self.entry_list)},
             {"button_text": "Clear", "command": lambda: clear_entries(self.entry_list)},
             {
                 "button_text": "Download",
                 "command": lambda: download_videos(self.entry_list),
             },
-            {
-                "button_text": "Close",
-                "command": lambda: close_window(self),
-            },
+            {"button_text": "Close", "command": lambda: close_window(self)},
         ]
         for config in config_options_buttons:
             options_button = CustomButton(options, entry_list=self.entry_list, **config)
-            options_button.pack(
-                pady=20,
-                padx=20,
-                ipadx=0,
-                ipady=7,
-                fill="y"
-            )
+            options_button.pack(pady=20, padx=20, ipadx=0, ipady=7, fill="y")
 
     def _create_only_audio_button(self) -> None:
-        """Create the buttons in the window."""
         self.only_audio_button = OnlyAudioButton(self, button_text="Only audio")
         self.only_audio_button.place(
             relx=0.75,
@@ -110,8 +76,6 @@ class CreateWindow(ctk.CTk):
         )
 
     def _create_labels(self) -> None:
-        """Create labels in the window."""
-
         self.label = TitleLabel(
             self,
             label_text="Insert the URL from Youtube",
