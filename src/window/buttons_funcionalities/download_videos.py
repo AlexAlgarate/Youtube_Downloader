@@ -2,7 +2,7 @@ from typing import List
 
 from config import audio_download_folder, video_download_folder
 from src.window.widgets.entries import EntryGap
-from src.window.widgets.OnlyAudioButton import OnlyAudioButton
+from src.window.widgets.only_audio_check import OnlyAudioButton
 from src.youtube.audio_downloader import audio_downloader
 from src.youtube.video_downloader import video_downloader
 

@@ -20,14 +20,14 @@ def add_entry(entry_list: List[Any]) -> None:
     if len(entry_list) <= limit:
         parent_widget: ctk.CTk = cast(ctk.CTk, entry_list[0].master)
         last_entry: Any = entry_list[-1]
-        rely: Any = last_entry.winfo_y() + last_entry.winfo_height() + 40
+        rely: Any = last_entry.winfo_y() + last_entry.winfo_height() + 100
 
         entry_gap = EntryGap(parent_widget)
         entry_gap.place(
             relx=0.05,
             rely=rely / parent_widget.winfo_height(),
             relheight=0.1,
-            relwidth=0.60,
+            relwidth=0.50,
             anchor="w",
         )
         entry_list.append(entry_gap)

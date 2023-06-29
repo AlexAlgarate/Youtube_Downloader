@@ -2,7 +2,7 @@ from typing import Any, Callable, List, Optional, Union
 
 import customtkinter as ctk
 
-from config import font
+from config import button_bg_color, corner_radius, font
 
 
 class CustomButton(ctk.CTkButton):
@@ -11,8 +11,7 @@ class CustomButton(ctk.CTkButton):
         parent: ctk.CTk,
         button_text: str,
         command: Optional[Callable],
-        entry_list: List[Any],
-        fg_color: str = None,
+        entry_list: List[Any] = None,
         **kwargs: Union[float, str],
     ) -> None:
         self.entry_list: List[Any] = entry_list
@@ -21,6 +20,7 @@ class CustomButton(ctk.CTkButton):
             text=button_text,
             command=command,
             font=font,
-            fg_color=fg_color,
+            fg_color=button_bg_color,
+            corner_radius=corner_radius,
         )
-        self.place(**kwargs)
+        self.pack(**kwargs)

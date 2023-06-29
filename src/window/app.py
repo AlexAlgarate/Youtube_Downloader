@@ -1,15 +1,8 @@
-from typing import Dict, List
+from typing import List
 
 import customtkinter as ctk
 
-from config import (
-    app_name,
-    app_size,
-    button_bg_color,
-    menu_name,
-    submenu_names,
-    urls_submenu,
-)
+from config import about_me_buttons, app_geometry, app_name
 from src.window.buttons_funcionalities.add_entry import add_entry
 from src.window.buttons_funcionalities.clear_entries import clear_entries
 from src.window.buttons_funcionalities.close_window import close_window
@@ -17,8 +10,8 @@ from src.window.buttons_funcionalities.download_videos import download_videos
 from src.window.widgets.buttons import CustomButton
 from src.window.widgets.entries import EntryGap
 from src.window.widgets.labels import TitleLabel
-from src.window.widgets.menu import AboutMeMenu
-from src.window.widgets.OnlyAudioButton import OnlyAudioButton
+from src.window.widgets.only_audio_check import OnlyAudioButton
+from src.window.widgets.options_menu import CustomMenu
 
 
 class CreateWindow(ctk.CTk):
@@ -31,7 +24,7 @@ class CreateWindow(ctk.CTk):
         ctk.set_default_color_theme("blue")
 
         self.title(app_name)
-        self.geometry(app_size)
+        self.geometry(app_geometry)
         self.resizable(width=False, height=False)
 
         self.entry_list: List[EntryGap] = []
@@ -44,48 +37,66 @@ class CreateWindow(ctk.CTk):
         self._create_labels()
         self._create_entry_gaps()
         self._create_only_audio_button()
-        self._create_frame_buttons()
         self._create_menu()
 
     def _create_menu(self):
         """Create the menu in the window."""
-        about_me_urls: Dict[str, str] = {
-            option: url for option, url in zip(submenu_names, urls_submenu)
-        }
 
-        self.menu = AboutMeMenu(
-            self,
-            menu_name=menu_name,
-            submenu=submenu_names,
-            button_bg_color=button_bg_color,
-            urls=about_me_urls,
-        )
-        self.menu.place(relx=0.70, rely=0.10, relheight=0.10, relwidth=0.25, anchor="w")
-
-    def _create_labels(self) -> None:
-        """Create labels in the window."""
-
-        self.label = TitleLabel(
-            self,
-            label_text="Insert the URL from Youtube",
-            fg_color="#3b8ed0",
-            corner_radius=8,
-        )
-        self.label.place(
-            relx=0.05,
-            rely=0.10,
-            relwidth=0.40,
-            relheight=0.10,
-            anchor="w",
+        self.menu = CustomMenu(parent=self)
+        self.menu.place(
+            relx=0.65,
+            rely=0.05,
+            relheight=0.75,
+            relwidth=0.30
         )
 
-    def _create_entry_gaps(self) -> None:
-        self.entry_gap = EntryGap(self, width=300)
-        self.entry_gap.place(
-            relx=0.05, rely=0.25, relheight=0.1, relwidth=0.60, anchor="w"
-        )
+        self._create_options_menu()
+        self._create_about_me_menu()
 
-        self.entry_list.append(self.entry_gap)
+    def _create_about_me_menu(self):
+        """Create the 'About Me' submenu in the menu."""
+
+        about_me = self.menu.add_menus(menu_label="About me")
+        for config_about_me in about_me_buttons:
+            about_me_button = self.menu.add_submenu_buttons(
+                parent=about_me, **config_about_me
+            )
+            about_me_button.pack(
+                pady=20,
+                padx=20,
+                ipadx=0,
+                ipady=7,
+                fill="y"
+            )
+
+    def _create_options_menu(self):
+        """Create the 'Options' submenu in the menu."""
+
+        options = self.menu.add_menus(menu_label="Options")
+        config_options_buttons = [
+            {
+                "button_text": "Add URL",
+                "command": lambda: add_entry(self.entry_list),
+            },
+            {"button_text": "Clear", "command": lambda: clear_entries(self.entry_list)},
+            {
+                "button_text": "Download",
+                "command": lambda: download_videos(self.entry_list),
+            },
+            {
+                "button_text": "Close",
+                "command": lambda: close_window(self),
+            },
+        ]
+        for config in config_options_buttons:
+            options_button = CustomButton(options, entry_list=self.entry_list, **config)
+            options_button.pack(
+                pady=20,
+                padx=20,
+                ipadx=0,
+                ipady=7,
+                fill="y"
+            )
 
     def _create_only_audio_button(self) -> None:
         """Create the buttons in the window."""
@@ -98,58 +109,25 @@ class CreateWindow(ctk.CTk):
             anchor="w",
         )
 
-    def _create_frame_buttons(self):
-        button_configurations = [
-            {
-                "button_text": "Clear",
-                "entry_list": self.entry_list,
-                "command": lambda: clear_entries(self.entry_list),
-                "relx": 0.05,
-                "rely": 0.85,
-                "relheight": 0.10,
-                "relwidth": 0.18,
-                "anchor": "nw",
-            },
-            {
-                "button_text": "Add URL",
-                "entry_list": self.entry_list,
-                "command": lambda: add_entry(self.entry_list),
-                "relx": 0.28,
-                "rely": 0.85,
-                "relheight": 0.10,
-                "relwidth": 0.18,
-                "anchor": "nw",
-                "fg_color": "#3b8ed0",
-            },
-            {
-                "button_text": "Download",
-                "entry_list": self.entry_list,
-                "command": lambda: download_videos(self.entry_list),
-                "relx": 0.51,
-                "rely": 0.85,
-                "relheight": 0.10,
-                "relwidth": 0.18,
-                "anchor": "nw",
-                "fg_color": "#3b8ed0",
-            },
-            {
-                "button_text": "Close",
-                "entry_list": self.entry_list,
-                "command": lambda: close_window(self),
-                "relx": 0.74,
-                "rely": 0.85,
-                "relheight": 0.10,
-                "relwidth": 0.18,
-                "anchor": "nw",
-            },
-        ]
+    def _create_labels(self) -> None:
+        """Create labels in the window."""
 
-        for config in button_configurations:
-            button = CustomButton(self, **config)
-            button.place(
-                relx=config["relx"],
-                rely=config["rely"],
-                relheight=config["relheight"],
-                relwidth=config["relwidth"],
-                anchor=config["anchor"],
-            )
+        self.label = TitleLabel(
+            self,
+            label_text="Insert the URL from Youtube",
+        )
+        self.label.place(
+            relx=0.05,
+            rely=0.03,
+            relwidth=0.40,
+            relheight=0.075,
+            anchor="nw",
+        )
+
+    def _create_entry_gaps(self) -> None:
+        self.entry_gap = EntryGap(self, width=300)
+        self.entry_gap.place(
+            relx=0.05, rely=0.25, relheight=0.1, relwidth=0.50, anchor="w"
+        )
+
+        self.entry_list.append(self.entry_gap)

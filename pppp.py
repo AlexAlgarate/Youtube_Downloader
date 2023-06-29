@@ -79,7 +79,7 @@ class App(ctk.CTk):
 
         # create tabview
         self.tabview = ctk.CTkTabview(self, width=250)
-        self.tabview.grid(row=0, column=2, padx=(10, 10), pady=(10, 20), sticky="nsew")
+        self.tabview.grid(row=0, column=2, padx=(40, 40), pady=(40, 40), sticky="nsew")
         self.tabview.add("MENUUU")
         self.tabview.add("Tab 2")
         self.tabview.add("Tab 3")
@@ -238,3 +238,28 @@ class App(ctk.CTk):
 if __name__ == "__main__":
     app = App()
     app.mainloop()
+
+
+# class MyTabView(ctk.CTkTabview):
+#     def __init__(self, master, **kwargs):
+#         super().__init__(master, **kwargs)
+
+#         # create tabs
+#         self.add("tab 1")
+#         self.add("tab 2")
+
+#         # add widgets on tabs
+#         self.label = ctk.CTkLabel(master=self.tab("tab 1"))
+#         self.label.grid(row=0, column=0, padx=20, pady=10)
+
+
+# class App(ctk.CTk):
+#     def __init__(self):
+#         super().__init__()
+
+#         self.tab_view = MyTabView(master=self)
+#         self.tab_view.grid(row=0, column=0, padx=20, pady=20)
+#         self.tab_view.configure()
+
+# app = App()
+# app.mainloop()

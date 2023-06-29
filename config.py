@@ -1,8 +1,9 @@
-from typing import List, Tuple, Union
+from typing import Dict, List, Tuple, Union
 
-# Aplication name and size of the window
+# GENERAL APP CONFIG
 app_name: str = "YOUTUBE DOWNLOADER"
-app_size: str = "600x365"
+geometry: Tuple[int, int] = (850, 550)
+app_geometry: str = "{}x{}".format(*geometry)
 
 # Directory for downloads
 video_download_folder: str = "Downloads/Videos"
@@ -15,14 +16,6 @@ audio_temp = "audio.mp4"
 # Limit of entry gaps
 limit: int = 3
 
-# Font options
-font_family: str = "Helvetica"
-font_size: int = 14
-font: Tuple[str, Union[int, str]] = (f"{font_family}", font_size)
-
-# Background colors
-button_bg_color: str = "#3b8ed0"
-
 # List of best quality streams
 best_streams: List[str] = [
     "2160p|160kbps",
@@ -34,10 +27,25 @@ best_streams: List[str] = [
     "480p|128kbps",
 ]
 
-# About Me menu config
-menu_name: str = "About Me"
-github_url: str = "https://github.com/AlexAlgarate?tab=repositories"
-linkedin_url: str = "https://www.linkedin.com/in/alex-algarate/"
+
+# GENERAL WIDGETS CONFIG
+button_bg_color: str = "#3b8ed0"
+anchor_nw_button: str = "nw"
+anchor_center_button: str = "center"
+font_family: str = "Helvetica"
+font_size: int = 20
+font: Tuple[str, Union[int, str]] = (f"{font_family}", font_size)
+corner_radius: int = 8
+
+# Config Menu
 new_browser: int = 1  # 0: same window
-submenu_names: List[str] = ["Github", "Linkedin"]
-urls_submenu: List[str] = [github_url, linkedin_url]
+about_me_buttons: Dict[str, str] = [
+    {
+        "button_text": "Github",
+        "url": "https://github.com/AlexAlgarate?tab=repositories",
+    },
+    {
+        "button_text": "Linkedin",
+        "url": "https://www.linkedin.com/in/alex-algarate/"
+    }
+]
