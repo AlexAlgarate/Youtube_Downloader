@@ -32,8 +32,15 @@ class CreateWindow(ctk.CTk):
 
         self._create_labels()
         self._create_entry_gaps()
-        # self._create_only_audio_button()
         self._create_menu()
+        self._create_progressbar()
+
+    def _create_progressbar(self):
+        bar = ctk.CTkProgressBar(self)
+        bar.place(relx=0.05, rely=0.85, relheight=0.05, relwidth=0.50)
+
+        label_bar = ctk.CTkLabel(bar, text="HOLA")
+        label_bar.place(relx=0.05)
 
     def _create_menu(self):
         self.menu = CustomMenu(parent=self)
@@ -66,16 +73,6 @@ class CreateWindow(ctk.CTk):
         for config in config_options_buttons:
             options_button = CustomButton(options, entry_list=self.entry_list, **config)
             options_button.pack(pady=20, padx=20, ipadx=0, ipady=7, fill="y")
-
-    def _create_only_audio_button(self) -> None:
-        self.only_audio_button = OnlyAudioButton(self, button_text="Only audio")
-        self.only_audio_button.place(
-            relx=0.25,
-            rely=0.85,
-            relwidth=0.2,
-            relheight=0.10,
-            anchor="w",
-        )
 
     def _create_labels(self) -> None:
         self.label = TitleLabel(
