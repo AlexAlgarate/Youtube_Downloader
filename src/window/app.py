@@ -31,26 +31,26 @@ class CreateWindow(ctk.CTk):
     def create_widgets(self) -> None:
         """Create the widgets in the window."""
 
-        self._create_labels()
-        self._create_entry_gaps()
-        self._create_menu()
-        self._create_progressbar()
+        self.create_labels()
+        self.create_entry_gaps()
+        self.create_menu()
+        self.create_progressbar()
 
-    def _create_progressbar(self):
+    def create_progressbar(self):
         self.progress_bar = CustomProgressBar(self)
         self.progress_bar.place(relx=0.05, rely=0.85, relheight=0.05, relwidth=0.50)
 
         # self.progress_label = ctk.CTkLabel(self, text="0%", anchor="center")
         # self.progress_label.place(relx=0.55, rely=0.85, relheight=0.05, relwidth=0.08)
 
-    def _create_menu(self):
+    def create_menu(self):
         self.menu = CustomMenu(parent=self)
         self.menu.place(relx=0.65, rely=0.05, relheight=0.85, relwidth=0.30)
 
         self._create_options_menu()
         self._create_about_me_menu()
 
-    def _create_about_me_menu(self):
+    def create_about_me_menu(self):
         about_me = self.menu.add_menus(menu_label="About me")
         for config_about_me in about_me_buttons:
             about_me_button = self.menu.add_submenu_buttons(
@@ -58,7 +58,7 @@ class CreateWindow(ctk.CTk):
             )
             about_me_button.pack(pady=20, padx=20, ipadx=0, ipady=7, fill="y")
 
-    def _create_options_menu(self):
+    def create_options_menu(self):
         options = self.menu.add_menus(menu_label="Options")
         self.only_audio_button = OnlyAudioButton(options, button_text="Only audio")
         self.only_audio_button.pack(pady=20, padx=20, ipadx=0, ipady=7, fill="y")
@@ -75,7 +75,7 @@ class CreateWindow(ctk.CTk):
             options_button = CustomButton(options, entry_list=self.entry_list, **config)
             options_button.pack(pady=20, padx=20, ipadx=0, ipady=7, fill="y")
 
-    def _create_labels(self) -> None:
+    def create_labels(self) -> None:
         self.label = TitleLabel(
             self,
             label_text="Insert the URL from Youtube",
@@ -88,10 +88,9 @@ class CreateWindow(ctk.CTk):
             anchor=anchor_nw_button,
         )
 
-    def _create_entry_gaps(self) -> None:
+    def create_entry_gaps(self) -> None:
         self.entry_gap = EntryGap(self, width=300)
         self.entry_gap.place(
             relx=0.05, rely=0.25, relheight=0.1, relwidth=0.50, anchor="w"
         )
-
         self.entry_list.append(self.entry_gap)
