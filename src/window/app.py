@@ -2,7 +2,7 @@ from typing import List
 
 import customtkinter as ctk
 
-from config import about_me_buttons, app_geometry, app_name
+from config import about_me_buttons, anchor_nw_button, app_geometry, app_name
 from src.window.buttons_funcionalities.add_entry import add_entry
 from src.window.buttons_funcionalities.clear_entries import clear_entries
 from src.window.buttons_funcionalities.close_window import close_window
@@ -12,6 +12,7 @@ from src.window.widgets.entries import EntryGap
 from src.window.widgets.labels import TitleLabel
 from src.window.widgets.only_audio_check import OnlyAudioButton
 from src.window.widgets.options_menu import CustomMenu
+from src.window.widgets.progress_bar import CustomProgressBar
 
 
 class CreateWindow(ctk.CTk):
@@ -36,11 +37,11 @@ class CreateWindow(ctk.CTk):
         self._create_progressbar()
 
     def _create_progressbar(self):
-        bar = ctk.CTkProgressBar(self)
-        bar.place(relx=0.05, rely=0.85, relheight=0.05, relwidth=0.50)
+        self.progress_bar = CustomProgressBar(self)
+        self.progress_bar.place(relx=0.05, rely=0.85, relheight=0.05, relwidth=0.50)
 
-        label_bar = ctk.CTkLabel(bar, text="HOLA")
-        label_bar.place(relx=0.05)
+        # self.progress_label = ctk.CTkLabel(self, text="0%", anchor="center")
+        # self.progress_label.place(relx=0.55, rely=0.85, relheight=0.05, relwidth=0.08)
 
     def _create_menu(self):
         self.menu = CustomMenu(parent=self)
@@ -84,7 +85,7 @@ class CreateWindow(ctk.CTk):
             rely=0.03,
             relwidth=0.40,
             relheight=0.075,
-            anchor="nw",
+            anchor=anchor_nw_button,
         )
 
     def _create_entry_gaps(self) -> None:
