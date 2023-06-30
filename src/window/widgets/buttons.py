@@ -22,5 +22,6 @@ class CustomButton(ctk.CTkButton):
             font=font,
             fg_color=button_bg_color,
             corner_radius=corner_radius,
+            **kwargs,
         )
-        self.pack(**kwargs)
+        self.pack()

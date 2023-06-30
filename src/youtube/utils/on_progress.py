@@ -13,8 +13,7 @@ def on_progress(stream: YouTube, chunk: bytes, bytes_remaining: int) -> str:
     Returns:
         str: A string representing the progress of the download in percentage.
     """
-    percentage_of_downloadd = str(
+    percentage_of_download = str(
         int((stream.filesize - bytes_remaining) / stream.filesize * 100)
     )
-
-    print(f"Downloaded {percentage_of_downloadd} %")
+    print(f"Downloaded {percentage_of_download} %")

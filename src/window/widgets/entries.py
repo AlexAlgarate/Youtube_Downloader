@@ -6,7 +6,7 @@ import customtkinter as ctk
 class EntryGap(ctk.CTkEntry):
     """Custom Entry widget representing a gap for user input."""
 
-    def __init__(self, parent: ctk.CTk, **kwargs: Union[float, str]) -> None:
+    def __init__(self, parent: ctk.CTk, **kwargs: Union[str, float]) -> None:
         """Initialize the EntryGap.
 
         Args:

@@ -8,7 +8,6 @@ from src.youtube.video_downloader import video_downloader
 
 
 def download_videos(entry_list: List[EntryGap]) -> None:
-    """Download the videos."""
     url_list: List[str] = [entry.get() for entry in entry_list]
     if OnlyAudioButton.audio_only_var and OnlyAudioButton.audio_only_var.get():
         audio_downloader(audio_url_list=url_list, download_folder=audio_download_folder)

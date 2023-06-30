@@ -9,14 +9,14 @@ class TitleLabel(ctk.CTkLabel):
     """Custom Label widget representing a title label."""
 
     def __init__(
-        self, parent: ctk.CTk, label_text: str, **kwargs: Union[float, str]
+        self, parent: ctk.CTk, label_text: str, *args: Union[float, str]
     ) -> None:
         """Initialize the TitleLabel.
 
         Args:
             parent (ctk.CTk): The parent CustomTkinter window.
             label_text (str): The text to display on the label.
-            **kwargs: Additional keyword arguments to configure the widget.
+            *args: Additional keyword arguments to configure the widget.
 
         """
         super().__init__(
@@ -26,5 +26,5 @@ class TitleLabel(ctk.CTkLabel):
             justify="left",
             corner_radius=corner_radius,
             fg_color=button_bg_color,
-            **kwargs
+            *args
         )
