@@ -47,8 +47,8 @@ class CreateWindow(ctk.CTk):
         self.menu = CustomMenu(parent=self)
         self.menu.place(relx=0.65, rely=0.05, relheight=0.85, relwidth=0.30)
 
-        self._create_options_menu()
-        self._create_about_me_menu()
+        self.create_options_menu()
+        self.create_about_me_menu()
 
     def create_about_me_menu(self):
         about_me = self.menu.add_menus(menu_label="About me")
