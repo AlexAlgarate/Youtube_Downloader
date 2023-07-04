@@ -12,6 +12,7 @@ from src.window.widgets.entries import EntryGap
 from src.window.widgets.labels import TitleLabel
 from src.window.widgets.only_audio_check import OnlyAudioButton
 from src.window.widgets.options_menu import CustomMenu
+
 # from src.window.widgets.progress_bar import CustomProgressBar
 
 
