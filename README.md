@@ -2,16 +2,15 @@
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)
 [![example workflow](https://github.com/AlexAlgarate/Youtube_Downloader/actions/workflows/actions.yml/badge.svg)](https://github.com/AlexAlgarate/Youtube_Downloader/actions/workflows/actions.yml)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/AlexAlgarate/Youtube_Downloader?color=green&style=flat-square)
 ![GitHub release (with filter)](https://img.shields.io/github/v/release/AlexAlgarate/Youtube_Downloader)
 
-This is a simple YouTube video downloader application built using Python and the tkinter library. It allows you to download YouTube videos and audio by providing their URLs.
+This is a simple YouTube video downloader application built using Python and the CustomTkinter library. It allows you to download YouTube videos and audio by providing their URLs.
 
 ## Requirements
 
 - Python 3.10
-- pytube
-- tkinter library
+- Pytube
+- Customtkinter
 
 ## Installation
 
