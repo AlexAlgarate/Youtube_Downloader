@@ -24,4 +24,3 @@ class CustomButton(ctk.CTkButton):
             corner_radius=corner_radius,
             **kwargs,
         )
-        self.pack()

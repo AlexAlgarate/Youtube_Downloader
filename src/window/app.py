@@ -12,7 +12,7 @@ from src.window.widgets.entries import EntryGap
 from src.window.widgets.labels import TitleLabel
 from src.window.widgets.only_audio_check import OnlyAudioButton
 from src.window.widgets.options_menu import CustomMenu
-from src.window.widgets.progress_bar import CustomProgressBar
+# from src.window.widgets.progress_bar import CustomProgressBar
 
 
 class CreateWindow(ctk.CTk):
@@ -34,14 +34,12 @@ class CreateWindow(ctk.CTk):
         self.create_labels()
         self.create_entry_gaps()
         self.create_menu()
-        self.create_progressbar()
+        # self.create_progressbar()
 
-    def create_progressbar(self):
-        self.progress_bar = CustomProgressBar(self)
-        self.progress_bar.place(relx=0.05, rely=0.85, relheight=0.05, relwidth=0.50)
-
-        # self.progress_label = ctk.CTkLabel(self, text="0%", anchor="center")
-        # self.progress_label.place(relx=0.55, rely=0.85, relheight=0.05, relwidth=0.08)
+    # TODO Run progress bar in another thread
+    # def create_progressbar(self):
+    #     self.progress_bar = CustomProgressBar(self)
+    #     self.progress_bar.place(relx=0.05, rely=0.85, relheight=0.05, relwidth=0.50)
 
     def create_menu(self):
         self.menu = CustomMenu(parent=self)

@@ -28,4 +28,3 @@ class OnlyAudioButton(ctk.CTkCheckBox):
             variable=self.audio_only_var,
             font=font,
         )
-        self.place(**kwargs)
