@@ -44,8 +44,5 @@ about_me_buttons: Dict[str, str] = [
         "button_text": "Github",
         "url": "https://github.com/AlexAlgarate?tab=repositories",
     },
-    {
-        "button_text": "Linkedin",
-        "url": "https://www.linkedin.com/in/alex-algarate/"
-    }
+    {"button_text": "Linkedin", "url": "https://www.linkedin.com/in/alex-algarate/"},
 ]
