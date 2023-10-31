@@ -37,7 +37,6 @@ env.bak/
 venv.bak/
 
 setup.cfg
-pyproject.toml
 app.log
 Downloads/
 vscode.md
