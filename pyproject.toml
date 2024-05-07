@@ -8,7 +8,7 @@ readme = "README.md"
 packages = [{include = "youtube_downloader"}]
 
 [tool.poetry.dependencies]
-python = "3.11"
+python = ">=3.11,<3.12"
 altgraph = "0.17.3"
 black = "23.3.0"
 click = "8.1.3"
