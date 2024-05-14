@@ -107,7 +107,9 @@ def _merge_streams(temp_dir: str, url: str, download_folder: str) -> None:
     output_path: str = os.path.join(
         download_folder, output_filename(YouTube(url).title)
     )
-    cmd: str = f"ffmpeg -i {video_temp_path} -i {audio_temp_path} -c:v copy -c:a aac {output_path}"
+    cmd: str = (
+        f"ffmpeg -i {video_temp_path} -i {audio_temp_path} -c:v copy -c:a aac {output_path}"
+    )
 
     if cmd:
         subprocess.call(cmd, shell=True)
